@@ -5,18 +5,18 @@ import Form from './Form';
 
 class Header extends React.Component {
   render() {
-    const { email, despesas } = this.props;
+    const { email, expenses } = this.props;
     return (
 
       <header>
         <div>
-          <span data-testid="email-field">{email}</span>
-          <span data-testid="total-field">
-            {despesas.length === 0
+          <p data-testid="email-field">{email}</p>
+          <p data-testid="total-field">
+            {expenses.length === 0
               ? 0
-              : despesas.reducer((acc, at) => acc + at, 0)}
-          </span>
-          <span data-testid="header-currency-field"> BRL </span>
+              : expenses.reducer((acumulador, valorAtual) => acumulador + valorAtual, 0)}
+          </p>
+          <p data-testid="header-currency-field"> BRL </p>
         </div>
         <Form />
       </header>
@@ -25,12 +25,12 @@ class Header extends React.Component {
 }
 const mapStateToProps = (state) => ({
   email: state.user.email,
-  despesas: state.wallet.expenses,
+  expenses: state.wallet.expenses,
 });
 
 Header.propTypes = {
   email: PropTypes.string.isRequired,
-  despesas: PropTypes.arrayOf.isRequired,
+  expenses: PropTypes.arrayOf.isRequired,
 };
 
 export default connect(mapStateToProps, null)(Header);
