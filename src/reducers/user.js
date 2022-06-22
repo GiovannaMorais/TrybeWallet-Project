@@ -2,8 +2,9 @@
 import { CHECK_EMAIL } from '../actions';
 
 const initialState = {
-  email: '',
-
+  user: {
+    email: '',
+  },
 };
 
 const userReducer = (state = initialState, action) => {

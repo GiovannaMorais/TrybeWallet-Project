@@ -1,4 +1,6 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
+import { CHECK_WALLET } from '../actions';
+
 const initialState = {
   user: {
     email: '',
@@ -11,6 +13,10 @@ const initialState = {
 
 const walletReducer = (state = initialState, action) => {
   switch (action.type) {
+  case CHECK_WALLET:
+    return {
+      ...state, wallet: action.payload,
+    };
   default:
     return state;
   }
