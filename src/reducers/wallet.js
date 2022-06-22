@@ -1,4 +1,3 @@
-// Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 import { REQUEST_API, REQUEST_API_SUCCESS } from '../actions';
 
 const initialState = {
