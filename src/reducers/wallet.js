@@ -35,7 +35,7 @@ const walletReducer = (state = initialState, action) => {
     return {
       ...state,
       expenses: [...state.expenses.filter(
-        (item) => item.id !== action.payload,
+        (item) => item.id !== +action.payload,
       )],
     };
 

@@ -3,6 +3,8 @@ export const CHECK_EMAIL = 'CHECK_EMAIL';
 export const REQUEST_API = 'REQUEST_API';
 export const REQUEST_API_SUCCESS = 'REQUEST_API_SUCCESS';
 export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
+export const SAVE_EXPENSE = 'SAVE_EXPENSE';
 export const EXPENSES_OBJ_GLOBAL = 'EXPENSES_OBJ_GLOBAL';
 
 export const CheckEmail = (payload) => ({
