@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { saveExpensesInState } from '../actions';
+import { saveExpensesInState,
+  // updateValueExpense,
+} from '../actions';
 
 class Form extends React.Component {
   state = {
@@ -26,6 +28,7 @@ class Form extends React.Component {
       tag,
       exchangeRates: ExchangeRates,
     });
+    // updateValue();
     saveExpenses(this.state);
     this.setState({
       value: 0,
@@ -126,6 +129,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  // updateValue: () => dispatch(updateValueExpense()),
   saveExpenses: (state) => dispatch(saveExpensesInState(state)),
 });
 

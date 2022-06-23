@@ -14,7 +14,7 @@ class Header extends React.Component {
         <div>
           <p data-testid="email-field">{email}</p>
           <p data-testid="total-field">
-            {expenses.reduce((acc, curr) => {
+            {!expenses ? 0 : expenses.reduce((acc, curr) => {
               acc += (curr.exchangeRates[curr.currency].ask * curr.value);
               return acc;
             }, 0).toFixed([2])}

@@ -1,27 +1,35 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { RemoveExpenseInState,
+} from '../actions';
 
 class FormTable extends React.Component {
+  deleteExpenses = (id) => {
+    const { deleteExp } = this.props;
+    deleteExp(id);
+  }
+
   render() {
-    console.log('props', this.props);
+    // console.log('props', this.props);
     const { expenses } = this.props;
+    console.log('expenses local', expenses);
+    console.log('expenses', expenses.length);
+
     return (
-      <div>
+      <section>
         <thead>
-          <table>
-            <tr>
-              <th>Descrição</th>
-              <th>Tag</th>
-              <th>Método de pagamento</th>
-              <th>Valor</th>
-              <th>Moeda</th>
-              <th>Câmbio utilizado</th>
-              <th>Valor convertido</th>
-              <th>Moeda de conversão</th>
-              <th>Editar/Excluir</th>
-            </tr>
-          </table>
+          <tr>
+            <th>Descrição</th>
+            <th>Tag</th>
+            <th>Método de pagamento</th>
+            <th>Valor</th>
+            <th>Moeda</th>
+            <th>Câmbio utilizado</th>
+            <th>Valor convertido</th>
+            <th>Moeda de conversão</th>
+            <th>Editar/Excluir</th>
+          </tr>
         </thead>
         <tbody>
           {expenses.map(({
@@ -30,7 +38,7 @@ class FormTable extends React.Component {
             exchangeRates,
             description,
             method,
-            value,
+            value, id,
           }, index) => (
             <tr key={ index }>
               <td>{description}</td>
@@ -43,11 +51,20 @@ class FormTable extends React.Component {
                 { Number(exchangeRates[currency].ask * value).toFixed(2) }
               </td>
               <td>Real</td>
+              <td>
+                <button
+                  type="button"
+                  data-testid="delete-btn"
+                  onClick={ () => this.deleteExpenses(id) }
+                >
+                  Excluir
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
-        wallet
-      </div>
+      </section>
+
     );
   }
 }
@@ -55,8 +72,13 @@ class FormTable extends React.Component {
 const mapStateToProps = (state) => ({
   expenses: state.wallet.expenses,
 });
+
+const mapDispatchToProps = (dispatch) => ({
+  deleteExp: (id) => dispatch(RemoveExpenseInState(id)),
+});
 FormTable.propTypes = {
   expenses: PropTypes.arrayOf.isRequired,
+  deleteExp: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps)(FormTable);
+export default connect(mapStateToProps, mapDispatchToProps)(FormTable);

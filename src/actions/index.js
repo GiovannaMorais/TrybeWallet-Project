@@ -1,20 +1,14 @@
 // Coloque aqui suas actions
 export const CHECK_EMAIL = 'CHECK_EMAIL';
-// export const CHECK_WALLET = 'CHECK_WALLET';
 export const REQUEST_API = 'REQUEST_API';
 export const REQUEST_API_SUCCESS = 'REQUEST_API_SUCCESS';
-export const ADD_EXPENSE = 'ADD_EXPENSE';
+export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
 export const EXPENSES_OBJ_GLOBAL = 'EXPENSES_OBJ_GLOBAL';
 
 export const CheckEmail = (payload) => ({
   type: CHECK_EMAIL,
   payload,
 });
-
-// export const CheckWallet = (payload) => ({
-//   type: CHECK_WALLET,
-//   payload,
-// });
 
 export const requestApi = () => ({
   type: REQUEST_API,
@@ -35,12 +29,12 @@ export function fetchAPI() {
   };
 }
 
-export const expenseAction = (payload) => ({
-  type: ADD_EXPENSE,
+export const saveExpensesInState = (payload) => ({
+  type: EXPENSES_OBJ_GLOBAL,
   payload,
 });
 
-export const saveExpensesInState = (payload) => ({
-  type: EXPENSES_OBJ_GLOBAL,
+export const RemoveExpenseInState = (payload) => ({
+  type: REMOVE_EXPENSE,
   payload,
 });

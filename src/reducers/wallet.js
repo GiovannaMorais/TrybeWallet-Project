@@ -1,4 +1,7 @@
-import { REQUEST_API, REQUEST_API_SUCCESS, EXPENSES_OBJ_GLOBAL } from '../actions';
+import { REQUEST_API,
+  REQUEST_API_SUCCESS,
+  EXPENSES_OBJ_GLOBAL,
+  REMOVE_EXPENSE } from '../actions';
 
 const initialState = {
   currencies: [],
@@ -28,6 +31,14 @@ const walletReducer = (state = initialState, action) => {
         action.payload,
       ],
     };
+  case REMOVE_EXPENSE:
+    return {
+      ...state,
+      expenses: [...state.expenses.filter(
+        (item) => item.id !== action.payload,
+      )],
+    };
+
   default:
     return state;
   }
