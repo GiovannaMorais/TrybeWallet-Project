@@ -2,11 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Form from './Form';
+import FormTable from './FormTable';
 
 class Header extends React.Component {
   render() {
     const { email, expenses } = this.props;
-    console.log('this.props', this.props);
+    // console.log('this.props', this.props);
 
     return (
       <header>
@@ -21,6 +22,7 @@ class Header extends React.Component {
           <p data-testid="header-currency-field"> BRL </p>
         </div>
         <Form />
+        <FormTable />
       </header>
     );
   }
