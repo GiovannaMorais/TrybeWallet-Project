@@ -6,15 +6,17 @@ import Form from './Form';
 class Header extends React.Component {
   render() {
     const { email, expenses } = this.props;
-    return (
+    console.log('this.props', this.props);
 
+    return (
       <header>
         <div>
           <p data-testid="email-field">{email}</p>
           <p data-testid="total-field">
-            {expenses.length === 0
-              ? 0
-              : expenses.reducer((acumulador, valorAtual) => acumulador + valorAtual, 0)}
+            {expenses.reduce((acc, curr) => {
+              acc += (curr.exchangeRates[curr.currency].ask * curr.value);
+              return acc;
+            }, 0).toFixed([2])}
           </p>
           <p data-testid="header-currency-field"> BRL </p>
         </div>

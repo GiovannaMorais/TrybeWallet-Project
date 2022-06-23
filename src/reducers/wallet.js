@@ -1,8 +1,9 @@
-import { REQUEST_API, REQUEST_API_SUCCESS } from '../actions';
+import { REQUEST_API, REQUEST_API_SUCCESS, EXPENSES_OBJ_GLOBAL } from '../actions';
 
 const initialState = {
   currencies: [],
   expenses: [],
+  totalValue: 0,
   editor: false,
   idToEdit: 0,
 
@@ -18,6 +19,14 @@ const walletReducer = (state = initialState, action) => {
     return {
       ...state,
       currencies: Object.keys(action.payload).filter((key) => key !== 'USDT'),
+    };
+  case EXPENSES_OBJ_GLOBAL:
+    return {
+      ...state,
+      expenses: [
+        ...state.expenses,
+        action.payload,
+      ],
     };
   default:
     return state;

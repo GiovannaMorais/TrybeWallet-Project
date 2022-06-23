@@ -3,6 +3,8 @@ export const CHECK_EMAIL = 'CHECK_EMAIL';
 // export const CHECK_WALLET = 'CHECK_WALLET';
 export const REQUEST_API = 'REQUEST_API';
 export const REQUEST_API_SUCCESS = 'REQUEST_API_SUCCESS';
+export const ADD_EXPENSE = 'ADD_EXPENSE';
+export const EXPENSES_OBJ_GLOBAL = 'EXPENSES_OBJ_GLOBAL';
 
 export const CheckEmail = (payload) => ({
   type: CHECK_EMAIL,
@@ -32,3 +34,13 @@ export function fetchAPI() {
     return dispatch(requestApiSuccess(data));
   };
 }
+
+export const expenseAction = (payload) => ({
+  type: ADD_EXPENSE,
+  payload,
+});
+
+export const saveExpensesInState = (payload) => ({
+  type: EXPENSES_OBJ_GLOBAL,
+  payload,
+});
