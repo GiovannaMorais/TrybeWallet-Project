@@ -23,45 +23,43 @@ class Header extends React.Component {
     SaveExpensesEditadas = () => {
       const { expenses, EditedForm, id } = this.props;
       // const { id } = this.state;
-      // console.log(expenses);
-      const editExpenses = expenses.filter((expense) => expense.id !== id);
-      // console.log('editExpenses', editExpenses);
-      const editedTask = expenses.find((expense) => expense.id === id);
-      // console.log('editedTask', editedTask);
+      const EditExpensesForm = expenses.filter((expense) => expense.id !== id);
+      // console.log('EditExpenseForm', editExpenses);
+      const EditedTaskForm = expenses.find((expense) => expense.id === id);
+      // console.log('EditedTaskForm', editedTask);
 
       // const tests = this.state;
       // const state = this.setState({ ...tests, exchangeRates: editedTask.exchangeRates });
-      const editedItem = {
+      const EditedChange = {
         ...this.state,
-        exchangeRates: editedTask.exchangeRates,
+        exchangeRates: EditedTaskForm.exchangeRates,
         id,
       };
-      editExpenses.push(editedItem);
-      const test = [...editExpenses];
+      EditExpensesForm.push(EditedChange);
+      const test = [...EditExpensesForm];
       EditedForm(test.sort((a, b) => a.id - b.id));
     }
 
     // SaveExpensesEditadas= () => {
     //   const { id, expenses, EditedForm } = this.props;
-    //   const expenseEdit = expenses.findIndex((expense) => expense.id === id);
-    //   const editExpenses = expenses.filter((expense) => expense.id !== id);
+    //   const EditExpensesForm = expenses.findIndex((expense) => expense.id === id);
+    //   const EditedTaskForm = expenses.filter((expense) => expense.id !== id);
     //   const test = {
     //     ...this.state,
-    //     exchangeRates: expenseEdit,
+    //     exchangeRates: EditExpensesForm,
     //     id,
     //   };
     //   const checkEdit = expenses.map((expense, i) => {
-    //     if (i === expenseEdit) {
-    //       return editExpenses.push(test);
+    //     if (i === EditExpensesForm) {
+    //       return EditedTaskForm.push(test);
     //     }
-    //     return editExpenses;
+    //     return EditedTaskForm;
     //   });
     //   EditedForm(checkEdit);
     // }
 
     render() {
       const { email, expenses, editor, currencies } = this.props;
-      // console.log('this.props', this.props);
       const { currency, tag, description, method, value } = this.state;
 
       return (
@@ -85,7 +83,7 @@ class Header extends React.Component {
                 <label htmlFor="valor">
                   Valor:
                   <input
-                    id="valor"
+                    id="value"
                     type="text"
                     name="value"
                     data-testid="value-input"
