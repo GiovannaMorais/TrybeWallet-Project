@@ -1,7 +1,7 @@
 import { REQUEST_API,
   REQUEST_API_SUCCESS,
   EXPENSES_OBJ_GLOBAL,
-  REMOVE_EXPENSE } from '../actions';
+  REMOVE_EXPENSE, SAVE_EXPENSE_EDIT, EDIT_EXPENSE } from '../actions';
 
 const initialState = {
   currencies: [],
@@ -38,7 +38,18 @@ const walletReducer = (state = initialState, action) => {
         (item) => item.id !== +action.payload,
       )],
     };
-
+  case EDIT_EXPENSE:
+    return {
+      ...state,
+      editor: false,
+      expenses: [...action.payload],
+    };
+  case SAVE_EXPENSE_EDIT:
+    return {
+      ...state,
+      editor: action.editor,
+      idToEdit: action.id,
+    };
   default:
     return state;
   }

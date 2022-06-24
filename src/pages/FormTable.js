@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { RemoveExpenseInState,
+import { RemoveExpenseInState, SaveExpenseEdit,
 } from '../actions';
 
 class FormTable extends React.Component {
@@ -12,7 +12,7 @@ class FormTable extends React.Component {
 
   render() {
     // console.log('props', this.props);
-    const { expenses } = this.props;
+    const { expenses, SaveExpEdit } = this.props;
     // console.log('expenses local', expenses);
     // console.log('expenses', expenses.length);
 
@@ -55,6 +55,7 @@ class FormTable extends React.Component {
                   <button
                     type="button"
                     data-testid="edit-btn"
+                    onClick={ () => SaveExpEdit(expense.id) }
                   >
                     Editar
                   </button>
@@ -83,10 +84,12 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   deleteExp: (id) => dispatch(RemoveExpenseInState(id)),
+  SaveExpEdit: (id) => dispatch(SaveExpenseEdit(id)),
 });
 FormTable.propTypes = {
   expenses: PropTypes.arrayOf.isRequired,
   deleteExp: PropTypes.func.isRequired,
+  SaveExpEdit: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FormTable);
