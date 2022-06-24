@@ -1,4 +1,3 @@
-// Coloque aqui suas actions
 export const CHECK_EMAIL = 'CHECK_EMAIL';
 export const REQUEST_API = 'REQUEST_API';
 export const REQUEST_API_SUCCESS = 'REQUEST_API_SUCCESS';
